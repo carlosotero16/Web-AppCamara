@@ -6,7 +6,7 @@ html, body{
 }
 
 #camera, #camera--view, #camera--sensor, #camera--output{
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -27,7 +27,7 @@ html, body{
     padding: 15px 20px;
     text-align: center;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     left: calc(50% - 100px);
 }
