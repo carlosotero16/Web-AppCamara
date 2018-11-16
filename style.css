@@ -12,10 +12,7 @@ html, body{
     object-fit: cover;
 }
 
-#camera--view, #camera--sensor, #camera--output{
-    transform: scaleX(-1);
-    filter: Chroma;
-}
+
 
 #camera--trigger{
     width: 200px;
