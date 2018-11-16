@@ -1,16 +1,17 @@
 
+
 // Set constraints for the video stream
 
 var constraints = { video: { facingMode: "user" }, audio: false };
 var track = null;
 
 // Define constants
-const cameraView = document.querySelector("#camera--view"),
+const video = document.querySelector("#video"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger");
 
-// Access the device camera and stream to cameraView ////seleccion de camara frontal o trasera
+// Access the device camera and stream to video ////seleccion de camara frontal o trasera
 function start() {
   if (window.stream) {
     window.stream.getTracks().forEach(track => {
@@ -40,7 +41,7 @@ function cameraStart() {
         .getUserMedia(constraints)
         .then(function(stream) {
             track = stream.getTracks()[0];
-            cameraView.srcObject = stream;
+            video.srcObject = stream;
         })
         .catch(function(error) {
             console.error("Oops. Algo salió mal.", error);
@@ -49,17 +50,39 @@ function cameraStart() {
 
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+    cameraSensor.width = video.videoWidth;
+    cameraSensor.height = video.videoHeight;
+    cameraSensor.getContext("2d").drawImage(video, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.classList.add("taken");
     // track.stop();
 };
 
-// Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  video.srcObject = stream;
+  // Refresh button list in case labels have become available
+  return navigator.mediaDevices.enumerateDevices();
+}
 
+
+function start() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const audioSource = audioInputSelect.value;
+  const videoSource = videoSelect.value;
+  const constraints = {
+    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+}
+// Start the video stream when the window loads
+//window.addEventListener("load", cameraStart, false);
+videoSelect.onchange = start;
 
 // Install ServiceWorker
 if ('serviceWorker' in navigator) {
@@ -72,3 +95,4 @@ if ('serviceWorker' in navigator) {
 } else {
   console.log('CLIENT: service worker is not supported.');
 }
+
