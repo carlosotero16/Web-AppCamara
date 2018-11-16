@@ -6,6 +6,7 @@ var constraints = {
   video: {
     width: { min: 320, max: 480 },
     height: { min: 240, max: 360 },
+    facingMode: { exact: "environment" }
   },
 };
 // Define constants
