@@ -1,32 +1,70 @@
-<html lang=”en”>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
     <title>Camara App</title>
-    <!-- Link to your main style sheet-->
+   
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <script type="text/javascript" src="reimg.js"></script>
+
+    <script type="text/javascript">
+
+
+    function convertCanvasToPng() {
+        var img = ReImg.fromCanvas(document.querySelector('canvas')).toPng();
+        var output = document.querySelector('camera--output');
+        output.innerHTML = '';
+        output.appendChild(img);
+    }
+
+    function downloadCanvasAsPng() {
+        ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
+    }
+    </script>
+
+    <div class="container">
+        <canvas id="camera--sensor" width="578" height="200"></canvas>
+        <script>
+            var camara = document.getElementById('camera--view');
+        var canvas = document.getElementById('camera--sensor');
+        var context = canvas.getContext('2d').drawImage(camara, 0, 0);
+            
+       
+        </script>
+  
+
+   <!-- <a href="#" onclick="downloadCanvasAsPng()">Download canvas PNG</a><br />-->
+
+
+
     <!-- Camera -->
     <main id="camera">
         <!-- Camera sensor -->
         <canvas id="camera--sensor"></canvas>
+
+      
         <!-- Camera view -->
         <video id="camera--view" autoplay playsinline></video>
         <!-- Camera output -->
-        <img src="/images/" alt="" id="camera--output">
-        <!--<img src="//:0" alt="" id="camera--output">-->
+       
+        <img src="//:0" alt="" id="camera--output">
        
             <!-- Camera trigger -->
-            <button id="camera--trigger">Tomar Foto</button>
+            <button id="camera--trigger" onclick="downloadCanvasAsPng()">Tomar Foto</button>
              
-            <button id="triggerProcesar">Procesar</button>
+            <button id="triggerProcesar" onclick="downloadCanvasAsPng()">Procesar</button>
 
         
 </main>
-    <!-- Reference to your JavaScript file -->
+  </div>
     <script src="app.js"></script>
+    <div class="output">
+
+    </div>
 </body>
 </html>
