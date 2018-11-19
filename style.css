@@ -34,26 +34,6 @@ html, body{
 
 
 
-.buttons {
-  text-align: center;
-  position: relative;
-  top: 300px;
-}
-.button {
-  font-family: 'Hammersmith One', sans-serif;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  border-radius: 8px;
-  font-size: 21px;
-  background: #42A5F6;
-  padding: 10px 20px 10px 20px;
-  border: none;
-}
-.button:hover {
-  background: #0090FF;
-  color: black;
-}
 
 
 
@@ -84,4 +64,5 @@ html, body{
     right: 20px;
     z-index: 2;
 }
+
 
