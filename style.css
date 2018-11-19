@@ -16,37 +16,61 @@ html, body{
 
 #camera--trigger{
 
-     width: 200px;
+    width: 135px;
     background-color: black;
     color: white;
     font-size: 16px;
     border-radius: 30px;
     border: none;
-    padding: 15px 20px;
+    padding: 10px 20px;
     text-align: center;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
     position:fixed;
     bottom: 30px;
-    right: calc(60% - 45px);
+    right: calc(70% - 45px);
 
    
 }
 
 
+
+.buttons {
+  text-align: center;
+  position: relative;
+  top: 300px;
+}
+.button {
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 21px;
+  background: #42A5F6;
+  padding: 10px 20px 10px 20px;
+  border: none;
+}
+.button:hover {
+  background: #0090FF;
+  color: black;
+}
+
+
+
 #triggerProcesar{
-    width: 200px;
+    width: 135px;
     background-color: black;
     color: white;
     display:inline-block;
     font-size: 16px;
     border-radius: 30px;
     border: none;
-    padding: 15px 20px;
+    padding: 10px 20px;
     text-align: center;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
     position:fixed;
     bottom: 30px;
-    left: calc(55% - 100px);
+    left: calc(85% - 100px);
  
 }
 
@@ -60,3 +84,4 @@ html, body{
     right: 20px;
     z-index: 2;
 }
+
