@@ -37,7 +37,7 @@ cameraTrigger.onclick = function() {
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
 
-    var imagenDireccion="C:\Users\cotero\Downloads\cheque.jpg";
+   
 
     //fetch(url, {
     //    method: 'POST',
@@ -54,7 +54,7 @@ cameraTrigger.onclick = function() {
     fetch(url, {
         method: 'POST',
         mode:"cors",
-        body: 'image:'+imagenDireccion,
+        body: 'image:'+dataURL,
         headers:{
             'Content-Type': 'application/json'
         }
