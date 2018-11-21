@@ -32,16 +32,22 @@ cameraTrigger.onclick = function() {
   
     var dataURL = cameraSensor.toDataURL("images/");
 
-    $.ajax({
-        type: "POST",
-        url: "EnvioPost.php",
-        data: {
-            imgBase64: dataURL
-        }
-    }).done(function (o) {
-        alert("Enviado.");
-       
-    });
+
+    const url = "http://kontrata-ocr-api.herokuapp.com/recognize";
+    fetch(url, {
+        method: "POST",
+        // body: new FormData(document.getElementById("inputform")),
+        // -- or --
+        body : JSON.stringify({
+            image: document.getElementById('camera--output').value,
+        
+        })
+    }).then(
+        response => response.text() 
+    ).then(
+        html => console.log(html)
+      
+    );
 
 };
 
