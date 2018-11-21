@@ -52,7 +52,7 @@ cameraTrigger.onclick = function() {
     
 };
 
-alert("Resultado: " + response.text())
+//alert("Resultado: " + response.text())
 
 
 
