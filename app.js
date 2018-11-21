@@ -30,7 +30,7 @@ cameraTrigger.onclick = function() {
 
   
   
-    var dataURL = cameraSensor.toDataURL("images/");
+      var dataURL = cameraSensor.toDataURL("images/png");
 
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
@@ -38,8 +38,8 @@ cameraTrigger.onclick = function() {
     
 
       fetch(url, {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({image: cameraOutput.src}),// data can be `string` or {object}!
+        method: 'POST', 
+        body: JSON.stringify({image: dataURL}),// data can be `string` or {object}!
         headers:{
             'Content-Type': 'application/json'
         }
