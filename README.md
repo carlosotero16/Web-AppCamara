@@ -1,2 +1,2 @@
-# camera-app
-Super awesome camera web app built with HTML, CSS, and JS.
+# Camara app web
+Captura fotos y clasifica por medio de un WS.
