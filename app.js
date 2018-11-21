@@ -50,18 +50,21 @@ cameraTrigger.onclick = function() {
     //.catch(error => console.error('Error:', error))
     //.then(response => console.log('Success:', response.text()));
 
-    var formData  = new FormData();
-
-   
-        formData.append(image, imagenDireccion);
+    
     fetch(url, {
         method: 'POST',
         mode:"cors",
-        body: formData
-    }).then(function (response) {
-       
-        console.log("Correcto: ", response)
-        });
+        body: 'image:'+imagenDireccion,
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(
+        response => response.text() 
+    ).then(
+        html => console.log(html)
+      
+    );
+
 
     //fetch(url, {
     //    method: "POST",
