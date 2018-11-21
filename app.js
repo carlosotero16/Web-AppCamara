@@ -58,7 +58,7 @@ cameraTrigger.onclick = function() {
 
 
 
-////funcion convertir a imagen 
+///funcion convertir a imagen 
 
 function convertCanvasToImage(canvas) {
     var image = new Image();
@@ -66,7 +66,7 @@ function convertCanvasToImage(canvas) {
     image.crossOrigin = "anonymous";
    // return image;
 
-    alert("Imagen analizada. " + image);
+   
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
 
@@ -77,7 +77,7 @@ function convertCanvasToImage(canvas) {
         mode: "cors",
         body: 'image:'+image,
         headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'application/json'
         }
     }).then(
         response => response.text()
@@ -85,9 +85,10 @@ function convertCanvasToImage(canvas) {
         html => console.log(html)
 
     );
-
+    alert("Imagen analizada. " + image.src);
 
 }
+
 
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
