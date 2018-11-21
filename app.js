@@ -23,7 +23,7 @@ function cameraStart() {
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, -1, -1);
+    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.src = cameraSensor.toDataURL("images/");
     cameraOutput.classList.add("taken");
@@ -33,32 +33,43 @@ cameraTrigger.onclick = function() {
     var dataURL = cameraSensor.toDataURL("images/");
 
 
-    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
+    const url = "http://kontrata-ocr-api.herokuapp.com/recognize";
+
+    
+
     fetch(url, {
-        method: "POST",
-        headers: { 'Content-Type': 'multipart/form-data' },
-        // body: new FormData(document.getElementById("inputform")),
-        // -- or --
-        body : JSON.stringify({
-            image:document.getElementById('camera--output').value,
-        
-        })
-    }).then(
-        response => response.text() 
-    ).then(
-        html => console.log(html)
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(dataURL), // data can be `string` or {object}!
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
+
+    //fetch(url, {
+    //    method: "POST",
+    //    headers: { 'Content-Type': 'multipart/form-data' },
+    //    // body: new FormData(document.getElementById("inputform")),
+    //    // -- or --
+    //    body : JSON.stringify({
+    //        image: document.getElementById('imgupload').value,
+    //    })
+    //}).then(
+    //    response => response.text() 
+    //).then(
+    //    html => console.log(html)
       
-    );
+    //);
     
 };
 
-//alert("Resultado: " + response.text())
+alert("Resultado: " + response.text())
 
 
 
 
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
-
 
 
