@@ -75,7 +75,7 @@ function convertCanvasToImage(canvas) {
     fetch(url, {
         method: 'POST',
         mode: "cors",
-        body: 'image:'+image,
+        body: 'image:'+image.src,
         headers: {
             'Content-Type': 'multipart/form-data'
         }
