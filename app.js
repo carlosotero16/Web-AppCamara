@@ -33,13 +33,14 @@ cameraTrigger.onclick = function() {
     var dataURL = cameraSensor.toDataURL("images/");
 
 
-    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
+    const url = "http://kontrata-ocr-api.herokuapp.com/recognize";
     fetch(url, {
         method: "POST",
+        headers: { 'Content-Type': 'multipart/form-data' },
         // body: new FormData(document.getElementById("inputform")),
         // -- or --
         body : JSON.stringify({
-            image: document.getElementById('camera--output').value,
+            image: cameraOutput.src,//document.getElementById('camera--output').value,
         
         })
     }).then(
@@ -48,12 +49,16 @@ cameraTrigger.onclick = function() {
         html => console.log(html)
       
     );
-     alert("Resultado: "+ response.text())
+    
 };
+
+alert("Resultado: " + response.text())
 
 
 
 
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
+
+
 
