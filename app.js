@@ -48,7 +48,7 @@ cameraTrigger.onclick = function() {
         html => console.log(html)
       
     );
-
+     alert("Resultado: "+ response.text())
 };
 
 
