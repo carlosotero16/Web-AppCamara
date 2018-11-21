@@ -70,12 +70,12 @@ function convertCanvasToImage(canvas) {
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
 
-    var imagenPath="C:\Users\cotero\Downloads\cheque.jpg"
+   
 
     fetch(url, {
         method: 'POST',
         mode: "cors",
-        body: 'image:'+imagenPath,//image.src,
+        body: 'image:'+image.src,
         headers: {
             'Content-Type': 'multipart/form-data'
         }
