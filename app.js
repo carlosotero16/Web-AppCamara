@@ -46,7 +46,7 @@ cameraTrigger.onclick = function() {
         }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response.text()));
+    .then(response => console.log('Success:', response));
 
     //fetch(url, {
     //    method: "POST",
