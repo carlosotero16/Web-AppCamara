@@ -27,7 +27,29 @@ cameraTrigger.onclick = function() {
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.src = cameraSensor.toDataURL("images/");
     cameraOutput.classList.add("taken");
+
+  
+  
+    var dataURL = cameraSensor.toDataURL("images/");
+
+    $.ajax({
+        type: "POST",
+        url: "EnvioPost.php",
+        data: {
+            imgBase64: dataURL
+        }
+    }).done(function (o) {
+        alert("Enviado.");
+       
+    });
+
 };
+
+
+
+
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
+
+
 
