@@ -23,47 +23,16 @@ function cameraStart() {
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+    cameraSensor.getContext("2d").drawImage(cameraView, -1, -1);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
-    cameraOutput.src = cameraSensor.toDataURL("images/");
+    cameraOutput.src = cameraSensor.toDataURL("images/jpg");
     cameraOutput.classList.add("taken");
 
+    //funcion convertir a imagen.
+    convertCanvasToImage(cameraOutput);
   
-  
-     
-   
     var dataURL = cameraSensor.toDataURL("images/jpg");
 
-
-    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
-
-   
-
-    //fetch(url, {
-    //    method: 'POST',
-    //    mode:"cors",
-    //    body: 'image:'+imagenDireccion, // JSON.stringify({ image: imagenDireccion }),// data can be `string` or {object}!
-    //    headers:{
-    //        'Content-Type': 'application/json'
-    //    }
-    //}).then(res => res.json())
-    //.catch(error => console.error('Error:', error))
-    //.then(response => console.log('Success:', response.text()));
-
-    
-    fetch(url, {
-        method: 'POST',
-        mode:"cors",
-        body: 'image:'+dataURL,
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    }).then(
-        response => response.text() 
-    ).then(
-        html => console.log(html)
-      
-    );
 
 
     //fetch(url, {
@@ -89,7 +58,36 @@ cameraTrigger.onclick = function() {
 
 
 
+///funcion convertir a imagen 
+
+function convertCanvasToImage(canvas) {
+    var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+    img.crossOrigin = "anonymous";
+   // return image;
+
+    alert("Imagen analizada. " + image);
+
+    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
+
+
+
+    fetch(url, {
+        method: 'POST',
+        mode: "cors",
+        body: 'image:'+image,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(
+        response => response.text()
+    ).then(
+        html => console.log(html)
+
+    );
+
+
+}
+
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
-
-
