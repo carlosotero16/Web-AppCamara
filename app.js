@@ -77,7 +77,7 @@ function convertCanvasToImage(canvas) {
         mode: "cors",
         body: 'image:'+image,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     }).then(
         response => response.text()
