@@ -62,7 +62,7 @@ cameraTrigger.onclick = function() {
 
 function convertCanvasToImage(canvas) {
     var image = new Image();
-    image.src = canvas.toDataURL("image/png");
+    image.src = cameraSensor.toDataURL("images/png");
     img.crossOrigin = "anonymous";
    // return image;
 
