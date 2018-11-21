@@ -31,32 +31,47 @@ cameraTrigger.onclick = function() {
   
   
      
-    var dataURL = cameraSensor.toDataURL("images/png");
+   
+    var dataURL = cameraSensor.toDataURL("images/jpg");
 
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
 
     var imagenDireccion="C:\Users\cotero\Downloads\cheque.jpg";
 
-   fetch(url, {
-        method: 'POST', 
+    //fetch(url, {
+    //    method: 'POST',
+    //    mode:"cors",
+    //    body: 'image:'+imagenDireccion, // JSON.stringify({ image: imagenDireccion }),// data can be `string` or {object}!
+    //    headers:{
+    //        'Content-Type': 'application/json'
+    //    }
+    //}).then(res => res.json())
+    //.catch(error => console.error('Error:', error))
+    //.then(response => console.log('Success:', response.text()));
+
+    var formData  = new FormData();
+
+   
+        formData.append(image, imagenDireccion);
+    fetch(url, {
+        method: 'POST',
         mode:"cors",
-        body: 'image:'+imagenDireccion, // JSON.stringify({ image: imagenDireccion }),// data can be `string` or {object}!
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    }).then(response => console.log('correcto',response)
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response)));
-    
+        body: formData
+    }).then(function (response) {
+       
+        console.log("Correcto: ", response)
+        });
+
     //fetch(url, {
     //    method: "POST",
+    //    mode: "cors",
     //    headers: { 'Content-Type': 'multipart/form-data' },
-    //    // body: new FormData(document.getElementById("inputform")),
+    //    body: new FormData(document.getElementById("taken")),
     //    // -- or --
-    //    body : JSON.stringify({
-    //        image: document.getElementById('imgupload').value,
-    //    })
+    //    //body : JSON.stringify({
+    //    //    image: document.getElementById('imgupload').value,
+    //    //})
     //}).then(
     //    response => response.text() 
     //).then(
