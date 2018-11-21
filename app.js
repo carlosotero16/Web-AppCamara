@@ -37,15 +37,15 @@ cameraTrigger.onclick = function() {
 
     
 
-    fetch(url, {
+      fetch(url, {
         method: 'POST', // or 'PUT'
-        body: JSON.stringify(image:dataURL), // data can be `string` or {object}!
+        body: JSON.stringify({image: cameraOutput.src}),// data can be `string` or {object}!
         headers:{
             'Content-Type': 'application/json'
         }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+    .then(response => console.log('Success:', response.text()));
 
     //fetch(url, {
     //    method: "POST",
