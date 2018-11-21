@@ -44,7 +44,7 @@ cameraTrigger.onclick = function() {
         headers:{
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json())
+    }).then(response => console.log('correcto',response)
     .catch(error => console.error('Error:', error))
     .then(response => console.log('Success:', response));
     
