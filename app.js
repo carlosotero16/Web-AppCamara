@@ -38,16 +38,16 @@ cameraTrigger.onclick = function() {
 
     var imagenDireccion="C:\Users\cotero\Downloads\cheque.jpg";
 
-    fetch(url, {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({ image: imagenDireccion }),// data can be `string` or {object}!
+   fetch(url, {
+        method: 'POST', 
+        body: 'image:'+imagenDireccion, // JSON.stringify({ image: imagenDireccion }),// data can be `string` or {object}!
         headers:{
             'Content-Type': 'application/json'
         }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
-
+    .then(response => console.log('Success:', response.text()));
+    
     //fetch(url, {
     //    method: "POST",
     //    headers: { 'Content-Type': 'multipart/form-data' },
