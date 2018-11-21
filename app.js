@@ -40,7 +40,7 @@ cameraTrigger.onclick = function() {
         // body: new FormData(document.getElementById("inputform")),
         // -- or --
         body : JSON.stringify({
-            image: cameraOutput.src,//document.getElementById('camera--output').value,
+            image:document.getElementById('camera--output').value,
         
         })
     }).then(
