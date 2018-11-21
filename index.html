@@ -1,141 +1,73 @@
-<!DOCTYPE html>
- 
-<html>
- 
+<html lang="en">
 <head>
- 
-    <title>Take or select photo(s) and upload</title>
- 
-    <script type="text/javascript">
- 
-      function fileSelected() {
- 
-        var count = document.getElementById('fileToUpload').files.length;
- 
-              document.getElementById('details').innerHTML = "";
- 
-              for (var index = 0; index < count; index ++)
- 
-              {
- 
-                     var file = document.getElementById('fileToUpload').files[index];
- 
-                     var fileSize = 0;
- 
-                     if (file.size > 1024 * 1024)
- 
-                            fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
- 
-                     else
- 
-                            fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
- 
-                     document.getElementById('details').innerHTML += 'Name: ' + file.name + '<br>Size: ' + fileSize + '<br>Type: ' + file.type;
- 
-                     document.getElementById('details').innerHTML += '<p>';
- 
-              }
- 
-      }
- 
-      function uploadFile() {
- 
-        var fd = new FormData();
- 
-              var count = document.getElementById('fileToUpload').files.length;
- 
-              for (var index = 0; index < count; index ++)
- 
-              {
- 
-                     var file = document.getElementById('fileToUpload').files[index];
- 
-                     fd.append(file.name, file);
- 
-              }
- 
-        var xhr = new XMLHttpRequest();
- 
-        xhr.upload.addEventListener("progress", uploadProgress, false);
- 
-        xhr.addEventListener("load", uploadComplete, false);
- 
-        xhr.addEventListener("error", uploadFailed, false);
- 
-        xhr.addEventListener("abort", uploadCanceled, false);
- 
-        xhr.open("POST", "savetofile.aspx");
- 
-        xhr.send(fd);
- 
-      }
- 
-      function uploadProgress(evt) {
- 
-        if (evt.lengthComputable) {
- 
-          var percentComplete = Math.round(evt.loaded * 100 / evt.total);
- 
-          document.getElementById('progress').innerHTML = percentComplete.toString() + '%';
- 
-        }
- 
-        else {
- 
-          document.getElementById('progress').innerHTML = 'unable to compute';
- 
-        }
- 
-      }
- 
-      function uploadComplete(evt) {
- 
-        /* This event is raised when the server send back a response */
- 
-        alert(evt.target.responseText);
- 
-      }
- 
-      function uploadFailed(evt) {
- 
-        alert("There was an error attempting to upload the file.");
- 
-      }
- 
-      function uploadCanceled(evt) {
- 
-        alert("The upload has been canceled by the user or the browser dropped the connection.");
- 
-      }
- 
-    </script>
- 
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Camara App</title>
+   
+    <link rel="stylesheet" href="style.css">
 </head>
- 
 <body>
- 
-  <form id="form1" enctype="multipart/form-data" method="post" action="Upload.aspx">
- 
-    <div>
- 
-      <label for="fileToUpload">Take or select photo(s)</label><br />
- 
-      <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" accept="image/*" capture="camera" />
- 
+
+    <script type="text/javascript" src="reimg.js"></script>
+
+    <script type="text/javascript">
+
+
+    function convertCanvasToPng() {
+        var img = ReImg.fromCanvas(document.querySelector('canvas')).toPng();
+        var output = document.querySelector('camera--output');
+        output.innerHTML = '';
+        output.appendChild(img);
+    }
+
+    function downloadCanvasAsPng() {
+        ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
+    }
+    </script>
+
+    <div class="container">
+        <canvas id="camera--sensor" width="578" height="200"></canvas>
+        <script>
+            var camara = document.getElementById('camera--view');
+        var canvas = document.getElementById('camera--sensor');
+        var context = canvas.getContext('2d').drawImage(camara, 0, 0);
+        
+        $('#OpenImgUpload').click(function () { $('#imgupload').trigger('click'); });
+          
+       
+       
+        </script>
+  
+
+    <!-- Camera -->
+    <main id="camera">
+        <!-- CANVAS -->
+        <canvas id="camera--sensor"></canvas>
+
+      
+        <!-- Camera view -->
+        <video id="camera--view" autoplay playsinline></video>
+        <!-- Camera output -->
+       
+        <img src="//:0" alt="" id="camera--output">
+       
+            <!-- Camera trigger -->
+        <button id="camera--trigger">Tomar Foto</button>
+             
+        <button id="triggerProcesar">Procesar</button>
+
+        <input type="file" id="imgupload" style="display:none" />
+        <button id="OpenImgUpload">Image Upload</button>   
+          
+        <input type="file" id="OpenImgUpload" accept=".png, .jpg, .jpeg" />
+        
+</main>
+  </div>
+    <script src="app.js"></script>
+    <div class="output">
+
     </div>
- 
-    <div id="details"></div>
- 
-    <div>
- 
-      <input type="button" onclick="uploadFile()" value="Upload" />
- 
-    </div>
- 
-    <div id="progress"></div>
- 
-  </form>
- 
 </body>
- 
 </html>
