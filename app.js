@@ -23,7 +23,7 @@ function cameraStart() {
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, -1, -1);
+    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     //cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.src = cameraSensor.toDataURL("images/jpg");
     cameraOutput.classList.add("taken");
@@ -62,7 +62,7 @@ cameraTrigger.onclick = function() {
 
 function convertCanvasToImage(canvas) {
     var image = new Image();
-    image.src = cameraSensor.toDataURL("images/png");
+    image.src = cameraSensor.toDataURL('image/jpeg', 0.5);
     image.crossOrigin = "anonymous";
    // return image;
 
@@ -70,12 +70,12 @@ function convertCanvasToImage(canvas) {
 
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
 
-
+    var imagenPath="C:\Users\cotero\Downloads\cheque.jpg"
 
     fetch(url, {
         method: 'POST',
         mode: "cors",
-        body: 'image:'+image.src,
+        body: 'image:'+imagenPath,//image.src,
         headers: {
             'Content-Type': 'multipart/form-data'
         }
