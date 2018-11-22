@@ -1,69 +1,22 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>Camara App</title>
-   
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Camara app</title>
+
 </head>
+
 <body>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>
+        <input type="submit" value="Subir Archivo" onclick="ObtenerImagenWS();" name="submit">
+    </form>
 
-    <script type="text/javascript" src="reimg.js"></script>
-
-    <script type="text/javascript">
-
-    //function convertCanvasToPng() {
-    //    var img = ReImg.fromCanvas(document.querySelector('canvas')).toPng();
-    //    var output = document.querySelector('camera--output');
-    //    output.innerHTML = '';
-    //    output.appendChild(img);
-    //}
-
-    //function downloadCanvasAsPng() {
-    //    ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
-    //}
-    </script>
-
-    <div class="container">
-        <canvas id="camera--sensor" width="578" height="200"></canvas>
-        <script>
-            var camara = document.getElementById('camera--view');
-        var canvas = document.getElementById('camera--sensor');
-        var context = canvas.getContext('2d').drawImage(camara, 0, 0);
-        
-        $('#OpenImgUpload').click(function () { $('#imgupload').trigger('click'); });
-          
-       
-       
-        </script>
-  
-
-    <!-- Camera -->
-    <main id="camera">
-        <!-- CANVAS -->
-        <canvas id="camera--sensor"></canvas>
-
-      
-        <!-- Camera view -->
-        <video id="camera--view" autoplay playsinline></video>
-        <!-- Camera output -->
-       
-        <img src="//:0" alt="" id="camera--output">
-       
-            <!-- Camera trigger -->
-        <button id="camera--trigger">Tomar Foto</button>
-             
-        <button id="triggerProcesar">Procesar</button>
-
-        <input type="file" id="my_file" accept=".png, .jpg, .jpeg">
-        
-</main>
-  </div>
-    <script src="app.js"></script>
-    <div class="output">
-
-    </div>
+	<script src="upload.js"></script>
 </body>
+
 </html>
