@@ -2,7 +2,7 @@
 
 function ObtenerImagenWS() {
 
-    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
+    const url = "http://kontrata-ocr-api.herokuapp.com/recognize";
     const form = document.querySelector('form');
 
     form.addEventListener('submit', e => {
