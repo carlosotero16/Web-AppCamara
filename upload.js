@@ -20,8 +20,7 @@ function ObtenerImagenWS() {
 
         fetch(url, {
             method: 'POST',
-            credentials: 'same-origin',
-            mode: 'no-cors',
+            mode: 'same-origin',
             body: formData
         }).then(response =>response.json())
           .then(data => {
