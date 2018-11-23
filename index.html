@@ -9,7 +9,7 @@
     <title>Clasificación App</title>
 
     
-       <script type="text/javascript">
+    <script type="text/javascript">
 
 
        
@@ -28,7 +28,7 @@
    
     <form method="post" enctype="multipart/form-data">
       
-            <label for="taken">
+            <label for="camera--trigger">
 
                 <!--<button id="camera--trigger" class="custom-file-upload">Tomar Foto</button>-->
                 <i class="custom-file-upload" id="image-label">Tomar Imagen</i>
@@ -38,7 +38,8 @@
             <p><img id="output" class="taken" /></p>
 
 
-            <input type="file" id="camera--trigger" name="files[]" accept="image/*" onchange="loadFile(event)" multiple>
+            <input type="file" id="camera--trigger" name="files[]" onchange="loadFile(event)" multiple>
+
             <input type="submit" value="Procesar" id="triggerProcesar" onclick="ObtenerImagenWS();" name="submit">
        
        
