@@ -1,7 +1,7 @@
 
 
 function ObtenerImagenWS() {
-
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
     const form = document.querySelector('form');
 
@@ -18,9 +18,10 @@ function ObtenerImagenWS() {
             formData.append('image', file);
         }
 
-        fetch(url, {
+        fetch(proxyurl + url, {
             method: 'POST',
-            mode: 'cors',
+           
+            //mode: 'cors',
             body: formData
         }).then(response =>response.json())
           .then(data => {
@@ -29,7 +30,6 @@ function ObtenerImagenWS() {
 
               alert("Numeracion: " + resultado);
           });
-
 
 
        
