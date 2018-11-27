@@ -1,5 +1,6 @@
 
 
+
 function ObtenerImagenWS() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
@@ -27,18 +28,47 @@ function ObtenerImagenWS() {
           .then(data => {
               console.log(data)
               resultado = JSON.stringify(data)
-
+              ObtenerTexto(resultado)
               alert("Numeracion: " + resultado);
+          }).catch(function (error) {
+              alert("Error: " + error);
           });
 
 
-       
     });
 
 
 
+   
+
 
 }
+
+
+function ObtenerTexto(resultado) {
+
+    var texto = resultado;
+    var variable1 = "";
+    var variable2 = "";
+    var variable3 = "";
+    var variable4 = "";
+
+    //obtiene el cod de acuerdo al resultado del ws:
+    var resCodCuenta = texto.substring(10, 14);
+    var resCodCBanco = texto.substring(15, 25);
+    var resCodRuta = texto.substring(26, 33);
+
+    //muestra mensaje con el resultado 
+
+    alert("Resultado Final: " +
+        "\nCodigo Cuenta: " + resCodCuenta +
+        "\nCodigo Banco: " + resCodCBanco +
+        "\nCodigo Ruta: " + resCodRuta);
+
+
+}
+
+
 
 
 
