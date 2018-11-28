@@ -1,5 +1,4 @@
 
-
 function ObtenerImagenWS() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
@@ -100,9 +99,9 @@ function ObtenerTexto(resultado) {
      "\nCodigo Cuenta: " + codCuenta +
       +"\n" +
      //"\nCodigo Banco: " + codBanco +
-     "\nCodigo Transito: " + codTransito.replace(/[@]/g, "") +
+     "\nCodigo Transito: " + codTransito +
      +"\n"+
-     "\nNumero Cuenta: " + codRuta.replace(/[[]/g, " ") +
+     "\nNumero Cuenta: " + codRuta.replace(/[[@]/g, " ") +
       +"\n" +
      "\nTexto Completo: " + textoCompleto2
     ,"success");
