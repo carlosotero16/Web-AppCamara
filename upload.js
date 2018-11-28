@@ -35,7 +35,7 @@ function ObtenerImagenWS() {
               ObtenerTexto(resultado)
              // alert("Numeracion: " + resultado);
           }).catch(function (error) {
-              swal("Error: " , " " + error, "error");
+              swal("Error: ", " " + error, "error");
           });
 
 
