@@ -101,7 +101,7 @@ function ObtenerTexto(resultado) {
      //"\nCodigo Banco: " + codBanco +
      "\nCodigo Transito: " + codTransito +
      +"\n"+
-     "\nNumero Cuenta: " + codRuta.replace(/[[@]/g, " ") +
+     "\nNumero Cuenta: " + codRuta.replace(/[[@]/g, "") +
       +"\n" +
      "\nTexto Completo: " + textoCompleto2
     ,"success");
