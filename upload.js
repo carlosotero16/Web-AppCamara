@@ -94,13 +94,16 @@ function ObtenerTexto(resultado) {
     var textoCompleto2 = textoCompleto.replace(/[[}]/g, "");
     
     //mensaje final 
-    swal("Resultado Final: " + 
+    swal("Resultado Final: ", 
      "\nCodigo Cuenta: " + codCuenta +
+      +"\n" +
      //"\nCodigo Banco: " + codBanco +
-     "\nCodigo Transito: "+ codTransito+
+     "\nCodigo Transito: " + codTransito +
+     +"\n"+
      "\nNumero Cuenta: " + codRuta.replace(/[[]/g, " ") +
+      +"\n" +
      "\nTexto Completo: " + textoCompleto2
-     );
+    ,"success");
 
   
 
