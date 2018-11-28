@@ -6,7 +6,7 @@ function ObtenerImagenWS() {
 
     swal("Procesando imagen....", {
         buttons: false,
-        timer: 5000,
+        timer: 6000,
     });
 
 
