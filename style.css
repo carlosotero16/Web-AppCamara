@@ -82,8 +82,8 @@ input[type="file"] {
 }
 
 .taken{
-    height: 250px!important;
-    width: 250px!important;
+    height: 200px!important;
+    width: 200px!important;
     transition: all 0.5s ease-in;
     border: solid 3px white;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
