@@ -5,7 +5,7 @@ html, body{
   width: 100%;
   background-image: url("fondoApp.jpg");
    background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
   /*background-position:right bottom;*/
   
 }
