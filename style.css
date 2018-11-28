@@ -3,7 +3,11 @@ html, body{
   padding: 0;
   height: 100%;
   width: 100%;
- 
+  background-image: url("fondoApp.jpg");
+   background-repeat: no-repeat;
+  background-size: contain;
+  /*background-position:right bottom;*/
+  
 }
 
 #camera, #camera--view, #camera--sensor, #camera--output{
