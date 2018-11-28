@@ -6,7 +6,7 @@ function ObtenerImagenWS() {
 
     swal("Procesando imagen....", {
         buttons: false,
-        timer: 6000,
+        timer: 5000,
     });
 
 
@@ -30,12 +30,12 @@ function ObtenerImagenWS() {
             body: formData
         }).then(response =>response.json())
           .then(data => {
-              console.log(data)
+              //console.log(data)
               resultado = JSON.stringify(data)
               ObtenerTexto(resultado)
              // alert("Numeracion: " + resultado);
           }).catch(function (error) {
-              swal("Error: " + error);
+              swal("Error: " + error, "error");
           });
 
 
