@@ -4,9 +4,11 @@ html, body{
   height: 100%;
   width: 100%;
   background-image: url("fondoApp.jpg");
-   background-repeat: no-repeat;
-  background-size: auto;
-  /*background-position:right bottom;*/
+  background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+ 
   
 }
 
