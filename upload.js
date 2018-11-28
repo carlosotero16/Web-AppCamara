@@ -91,7 +91,7 @@ function ObtenerTexto(resultado) {
    
     var textoCompleto = resultado.replace(/[{"text":"]/g, "");
 
-    var textoCompleto2 = textoCompleto.replace(/[[}]/g, "");
+    var textoCompleto2 = textoCompleto.replace(/[[}@]/g, "");
     
     //mensaje final 
     swal("Resultado Final: ", 
