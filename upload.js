@@ -24,12 +24,12 @@ function ObtenerImagenWS() {
             body: formData
         }).then(response =>response.json())
           .then(data => {
-              console.log(data)
+              //console.log(data)
               resultado = JSON.stringify(data)
               ObtenerTexto(resultado)
              // alert("Numeracion: " + resultado);
           }).catch(function (error) {
-              alert("Error: " + error);
+              swal("Error: " + error);
           });
 
 
