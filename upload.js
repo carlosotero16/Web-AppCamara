@@ -4,6 +4,12 @@ function ObtenerImagenWS() {
     const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
     const form = document.querySelector('form');
 
+    swal("Procesando imagen....", {
+        buttons: false,
+        timer: 5000,
+    });
+
+
     form.addEventListener('submit', e => {
         e.preventDefault();
 
@@ -24,7 +30,7 @@ function ObtenerImagenWS() {
             body: formData
         }).then(response =>response.json())
           .then(data => {
-              //console.log(data)
+              console.log(data)
               resultado = JSON.stringify(data)
               ObtenerTexto(resultado)
              // alert("Numeracion: " + resultado);
@@ -95,5 +101,7 @@ function ObtenerTexto(resultado) {
      "\nNumero Cuenta: " + codRuta.replace(/[[]/g, " ") +
      "\nTexto Completo: " + textoCompleto2
      );
+
+  
 
 }
