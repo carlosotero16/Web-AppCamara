@@ -88,7 +88,7 @@ function ObtenerTexto(resultado) {
     var textoCompleto2 = textoCompleto.replace(/[[}]/g, "");
     
     //mensaje final 
-    alert("Resultado Final: " + 
+    swal("Resultado Final: " + 
      "\nCodigo Cuenta: " + codCuenta +
      //"\nCodigo Banco: " + codBanco +
      "\nCodigo Transito: "+ codTransito+
