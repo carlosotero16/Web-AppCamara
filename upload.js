@@ -1,7 +1,7 @@
 
 function ObtenerImagenWS() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
+    const url = "https://app-cheques.herokuapp.com/recognize";
     const form = document.querySelector('form');
 
     swal("Procesando imagen....", {
