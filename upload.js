@@ -36,7 +36,7 @@ header('Access-Control-Allow-Origin: *');
             <i class="custom-file-upload" id="image-label">Tomar foto</i>
         </label>
         <!-- <img id="blah" src="#" alt="imagen campo" />-->
-        <p><img id="output" class="taken" width="200" height="200" /></p>
+        <p><img id="output" class="taken" /></p>
 
         <input type="file" id="camera--trigger" name="files[]" onchange="loadFile(event)" width="200" height="200" multiple>
         <input type="submit" value="Procesar" id="triggerProcesar" onclick="ObtenerImagenWS();" name="submit">
