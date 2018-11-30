@@ -1,7 +1,7 @@
 
 function ObtenerImagenWS() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://app-cheques.herokuapp.com/recognize";
+    const url = "https://kontrata-ocr-api.herokuapp.com/recognize";
     const form = document.querySelector('form');
 
     swal("Procesando imagen....", {
@@ -58,9 +58,12 @@ function ObtenerTexto(resultado) {
     //en cheques de costa rica, banco nacional y bac: solo existe cod cuenta, numero de cuenta y transito.
 
 
+
+    //"57141[151[@14910010012300703"
+
     var test_str = resultado;
     //codigo cuenta
-    var CodCuentastart_pos = test_str.indexOf('text":"') + 7;
+    var CodCuentastart_pos = test_str.indexOf('"') + 1;
     var CodCuentaend_pos = test_str.indexOf('[', CodCuentastart_pos);
 
     var codCuenta = test_str.substring(CodCuentastart_pos, CodCuentaend_pos)
@@ -82,17 +85,16 @@ function ObtenerTexto(resultado) {
 
 
 
-    //codigo ruta
+    //codigo ruta 
 
     var CodRutatart_pos = test_str.indexOf('[') + 4;
-    var CodRutaend_pos = test_str.indexOf('"}', CodRutatart_pos);
+    var CodRutaend_pos = test_str.indexOf('"', CodRutatart_pos);
 
     var codRuta = test_str.substring(CodRutatart_pos, CodRutaend_pos)
 
    
-    var textoCompleto = resultado.replace(/[{"text":"]/g, "");
-
-    var textoCompleto2 = textoCompleto.replace(/[[}@]/g, "");
+ 
+    var textoCompleto2 = resultado.replace(/[[}@]/g, "");
     
     //mensaje final 
     swal("Resultado Final: ", 
