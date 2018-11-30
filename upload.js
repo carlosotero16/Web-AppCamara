@@ -1,113 +1,48 @@
+<!DOCTYPE html>
+<?php
+header('Access-Control-Allow-Origin: *');
+?>
 
-function ObtenerImagenWS() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://app-cheques.herokuapp.com/recognize";
-    const form = document.querySelector('form');
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Scaneo App</title>
 
-    swal("Procesando imagen....", {
-        buttons: false,
-        timer: 7000,
-        icon: "info",
-    });
-
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        const files = document.querySelector('[type=file]').files;
-        const formData = new FormData();
-        var resultado = "";
-
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i];
-
-            formData.append('image', file);
-        }
-
-        fetch(proxyurl + url, {
-            method: 'POST',
-           
-            //mode: 'cors',
-            body: formData
-        }).then(response =>response.json())
-          .then(data => {
-              //console.log(data)
-              resultado = JSON.stringify(data)
-              ObtenerTexto(resultado)
-             // alert("Numeracion: " + resultado);
-          }).catch(function (error) {
-              swal("Error: ", " " + error, "error");
-          });
-
-
-    });
+    <script type="text/javascript">
 
 
 
-   
+    var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+	swal("Aviso:","Imagen Cargada Correctamente!" ,"success");
+    };
 
 
-}
+    </script>
+</head>
+<body>
 
 
-function ObtenerTexto(resultado) {
+    <form method="post" enctype="multipart/form-data">
+
+        <label for="camera--trigger">
+            <!--<button id="camera--trigger" class="custom-file-upload">Tomar Foto</button>-->
+          
+            <i class="custom-file-upload" id="image-label">Tomar foto</i>
+        </label>
+        <!-- <img id="blah" src="#" alt="imagen campo" />-->
+        <p><img id="output" class="taken" width="200" height="200" /></p>
+
+        <input type="file" id="camera--trigger" name="files[]" onchange="loadFile(event)" width="200" height="200" multiple>
+        <input type="submit" value="Procesar" id="triggerProcesar" onclick="ObtenerImagenWS();" name="submit">
 
 
-    ///cheque prueba cr: {"text":"57141[151[1491001001300"}
-
-    //en cheques de costa rica, banco nacional y bac: solo existe cod cuenta, numero de cuenta y transito.
-
-
-
-    //"57141[151[@14910010012300703"
-
-    var test_str = resultado;
-    //codigo cuenta
-    var CodCuentastart_pos = test_str.indexOf('"') + 1;
-    var CodCuentaend_pos = test_str.indexOf('[', CodCuentastart_pos);
-
-    var codCuenta = test_str.substring(CodCuentastart_pos, CodCuentaend_pos)
-
-    //codigo banco
-    //var CodBancotart_pos = test_str.indexOf('[') + 1;
-    //var CodBancoend_pos = test_str.indexOf('[', CodBancotart_pos);
-
-    //var codBanco = test_str.substring(CodBancotart_pos, CodBancoend_pos)
-
-
-    //transito
-    var CodTransitotart_pos = test_str.indexOf('[') + 1;
-    var CodTransitoend_pos = test_str.indexOf('[', CodTransitotart_pos);
-
-    var codTransito = test_str.substring(CodTransitotart_pos, CodTransitoend_pos)
-
-
-
-
-
-    //codigo ruta 
-
-    var CodRutatart_pos = test_str.indexOf('[') + 4;
-    var CodRutaend_pos = test_str.indexOf('"', CodRutatart_pos);
-
-    var codRuta = test_str.substring(CodRutatart_pos, CodRutaend_pos)
-
-   
- 
-    var textoCompleto2 = resultado.replace(/[[}@]/g, "");
-    
-    //mensaje final 
-    swal("Resultado Final: ", 
-     "\nCodigo Cuenta: " + codCuenta +
-      +"\n" +
-     //"\nCodigo Banco: " + codBanco +
-     "\nCodigo Transito: " + codTransito +
-     +"\n"+
-     "\nNumero Cuenta: " + codRuta.replace(/[[@]/g, "") +
-      +"\n" +
-     "\nTexto Completo: " + textoCompleto2
-    ,"success");
-
-  
-
-}
+    </form>
+    <script src="upload.js"></script>
+</body>
+</html>
